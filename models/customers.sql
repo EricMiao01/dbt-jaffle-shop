@@ -5,7 +5,7 @@ customers AS (
         id, 
         first_name||' '||last_name AS name
     FROM
-        `dbt-tutorial.jaffle_shop.customers`
+        {{ ref('stg_customers') }}
 ),
 
 orders AS (
@@ -13,7 +13,7 @@ orders AS (
         id,
         user_id
     FROM
-        `dbt-tutorial.jaffle_shop.orders`
+        {{ ref('stg_orders') }}
 )
 
 SELECT
